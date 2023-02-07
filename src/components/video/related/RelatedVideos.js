@@ -4,7 +4,7 @@ import RelatedVideoLoader from "../../ui/loaders/RelatedVideoLoader";
 import RelatedVideo from "./RelatedVideo";
 
 export default function RelatedVideos({id, title}) {
-    console.log(id, title)
+    
     const { data: relatedVideos, isLoading , isError } = useGetRelatedVideoQuery({id, title});
 
 

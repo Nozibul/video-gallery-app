@@ -1,6 +1,29 @@
+import { useParams } from "react-router-dom";
+import { useGetVideoQuery } from "../../features/api/apiSlice";
+import Error from "../ui/Error";
 import Form from "./Form";
 
 export default function EditVideo() {
+
+   const { videoId } = useParams();
+   const { data: video, isLoading , isError } = useGetVideoQuery(videoId);
+
+      // decide what to render
+      let content = null;
+      if(isLoading){
+          content = <div>Loading...</div>
+      }
+      
+      if(!isLoading && isError){
+          content = <Error message='There was an Error' />
+      }
+    
+      if(!isLoading && !isError && video?.id){
+        content = <>
+                   <Form video={video} />
+                </>
+      }
+
     return (
         <div className="max-w-7xl mx-auto px-5 lg:px-0">
             <div className="w-full">
@@ -13,7 +36,7 @@ export default function EditVideo() {
                     </p>
                 </div>
                 <div className="mt-5 md:mt-0 md:col-span-2">
-                    <Form />
+                    {content}
                 </div>
             </div>
         </div>
