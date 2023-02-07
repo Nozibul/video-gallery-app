@@ -29,7 +29,7 @@ export default function Description({video}) {
                     {date}
                 </h2>
 
-                <div className="flex gap-6 w-full justify-end cursor-pointer" onClick={handleDelete} >
+                <div className="flex gap-6 w-full justify-end " >
                     <div className="flex gap-1">
                         <div className="shrink-0">
                             <img
@@ -45,7 +45,7 @@ export default function Description({video}) {
                             </span>
                         </Link>
                     </div>
-                    <div className="flex gap-1">
+                    <div className="flex gap-1 cursor-pointer" onClick={handleDelete}>
                         <div className="shrink-0">
                             <img
                                 className="w-5 block"
